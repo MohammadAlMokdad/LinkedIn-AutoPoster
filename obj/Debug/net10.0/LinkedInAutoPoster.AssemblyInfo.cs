@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinkedInAutoPoster")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82f24a0da1840c8093ec5328d43b33cb2f2f7895")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+18412b2c3363ba848acf0a45c87ea47d7a094e22")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinkedInAutoPoster")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinkedInAutoPoster")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

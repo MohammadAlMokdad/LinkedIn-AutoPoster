@@ -20,38 +20,50 @@ public class LinkedInPoster
     {
         try
         {
-            var postContent = new
-            {
-                author = authorUrn,
-                lifecycleState = "PUBLISHED",
-                specificContent = new
-                {
-                    comLinkedinUgcShareContent = new
-                    {
-                        shareCommentary = new { text },
-                        shareMediaCategory = "NONE"
-                    }
-                },
-                visibility = new { comLinkedinUgcMemberNetworkVisibility = visibility }
-            };
+            // Build JSON manually with correct property names for LinkedIn API
+            var json = "{" +
+              "\"author\": \"" + authorUrn + "\"," +
+              "\"lifecycleState\": \"PUBLISHED\"," +
+              "\"specificContent\": {" +
+                "\"com.linkedin.ugc.ShareContent\": {" +
+                  "\"shareCommentary\": {" +
+                    "\"text\": \"" + text.Replace("\"", "\\\"") + "\"" +
+                  "}," +
+                  "\"shareMediaCategory\": \"NONE\"" +
+                "}" +
+              "}," +
+              "\"visibility\": {" +
+                "\"com.linkedin.ugc.MemberNetworkVisibility\": \"" + visibility + "\"" +
+              "}" +
+            "}";
 
             var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+            client.DefaultRequestHeaders.Add("X-Restli-Protocol-Version", "2.0.0");
 
-            var json = JsonSerializer.Serialize(postContent);
             var response = client.PostAsync(
                 "https://api.linkedin.com/v2/ugcPosts",
                 new StringContent(json, Encoding.UTF8, "application/json")
             ).Result;
 
+            var responseContent = response.Content.ReadAsStringAsync().Result;
+            
             if (response.IsSuccessStatusCode)
-                Console.WriteLine("✅ LinkedIn post successful!");
+            {
+                Console.WriteLine("LinkedIn post successful!");
+                var shareId = JsonSerializer.Deserialize<JsonElement>(responseContent);
+                if (shareId.TryGetProperty("id", out var id))
+                    Console.WriteLine($"Share ID: {id.GetString()}");
+            }
             else
-                Console.WriteLine($"❌ LinkedIn post failed: {response.StatusCode} - {response.Content.ReadAsStringAsync().Result}");
+            {
+                Console.WriteLine($"LinkedIn post failed: {response.StatusCode}");
+                Console.WriteLine($"Error details: {responseContent}");
+            }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"❌ Error posting to LinkedIn: {ex.Message}");
+            Console.WriteLine($"Error posting to LinkedIn: {ex.Message}");
         }
     }
 }

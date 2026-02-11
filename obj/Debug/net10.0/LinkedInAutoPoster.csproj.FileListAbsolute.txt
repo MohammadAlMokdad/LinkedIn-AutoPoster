@@ -12,3 +12,17 @@ C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\refint\LinkedIn
 C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.pdb
 C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.genruntimeconfig.cache
 C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\ref\LinkedInAutoPoster.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.sourcelink.json
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.csproj.AssemblyReference.cache
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.Configuration.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\Microsoft.Extensions.Primitives.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedIn.34B9B0B2.Up2Date
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\appsettings.json

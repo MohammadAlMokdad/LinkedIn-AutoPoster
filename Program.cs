@@ -24,7 +24,7 @@ class Program
                         ?? config["LinkedIn:AuthorUrn"];
         var visibility = Environment.GetEnvironmentVariable("VISIBILITY") 
                         ?? config["LinkedIn:Visibility"] 
-                        ?? "CONNECTIONS";
+                        ?? "PUBLIC";
 
         if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(authorUrn))
         {

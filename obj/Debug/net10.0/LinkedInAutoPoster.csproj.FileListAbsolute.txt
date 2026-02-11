@@ -1,0 +1,14 @@
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\LinkedInAutoPoster.exe
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\LinkedInAutoPoster.deps.json
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\LinkedInAutoPoster.runtimeconfig.json
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\LinkedInAutoPoster.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\bin\Debug\net10.0\LinkedInAutoPoster.pdb
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.AssemblyInfoInputs.cache
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.AssemblyInfo.cs
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.csproj.CoreCompileInputs.cache
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\refint\LinkedInAutoPoster.dll
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.pdb
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\LinkedInAutoPoster.genruntimeconfig.cache
+C:\Users\mhmdm\source\repos\LinkedInAutoPoster\obj\Debug\net10.0\ref\LinkedInAutoPoster.dll

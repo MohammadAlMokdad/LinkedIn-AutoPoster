@@ -11,7 +11,7 @@ git push origin main
 
 ## Step 2: Configure GitHub Secrets
 
-1. Go to your GitHub repository: https://github.com/MohammadAlMokdad/LinkedIn-AutoPoster
+1. Go to your GitHub repository
 
 2. Navigate to **Settings** → **Secrets and variables** → **Actions**
 

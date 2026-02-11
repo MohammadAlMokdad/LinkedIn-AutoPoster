@@ -1,8 +1,8 @@
-name: Weekly LinkedIn Poster
+name: Daily LinkedIn Poster
 
 on:
   schedule:
-    - cron: '0 10 * * MON'  # Every Monday at 10:00 UTC
+    - cron: '0 6 * * *'  # Every day at 06:00 UTC (08:00 Lebanon time)
   workflow_dispatch:       # Manual run option
 
 jobs:
@@ -30,4 +30,3 @@ jobs:
         LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}
         LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
         VISIBILITY: ${{ secrets.VISIBILITY }}
-        RSS_FEED_URL: ${{ secrets.RSS_FEED_URL }}

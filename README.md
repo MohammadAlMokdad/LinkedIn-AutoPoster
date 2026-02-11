@@ -1,29 +1,64 @@
 # LinkedIn AutoPoster
 
-A C# application that automatically posts news updates from an RSS feed to LinkedIn using the LinkedIn API.
+A C# application that automatically posts curated tech news, AI updates, and cybersecurity insights to LinkedIn every day — with beautifully formatted posts that drive engagement.
 
-## Features
+## ✨ Features
 
-- 📰 Fetches latest news from any RSS feed
-- 🚀 Posts updates to LinkedIn automatically
-- ⚙️ Supports both local configuration and environment variables
-- 🔄 GitHub Actions integration for scheduled posts
+- 🤖 **Multi-source news aggregation** — Fetches from 7 curated RSS feeds covering AI, cybersecurity, dev tools, and tech news
+- 🎨 **Beautiful post formatting** — Unicode bold headers, emojis, separators, and strategic hashtags
+- 📅 **Daily automated posting** — Posts every day at 08:00 Lebanon time (06:00 UTC) via GitHub Actions
+- 🔄 **Smart feed rotation** — Different category each day for content variety
+- 🛡️ **API resilience** — New LinkedIn Posts API with automatic fallback to legacy UGC API
+- ⚙️ **Flexible configuration** — Environment variables or JSON config
 
-## Prerequisites
+## 📡 Curated News Sources
+
+| Category | Source |
+|---|---|
+| 🛡️ Cybersecurity & Hacking | The Hacker News |
+| 🔒 Cybersecurity News | BleepingComputer |
+| 🔐 Security Research | Krebs on Security |
+| � Developer Tools | GitHub Blog |
+| 🔬 AI Research | MIT News – AI |
+| 🚀 Tech News | Ars Technica |
+| 🤖 AI & Machine Learning | Google AI Blog |
+
+## 📋 Post Format Preview
+
+```
+🔥 𝗗𝗮𝗶𝗹𝘆 𝗧𝗲𝗰𝗵 𝗜𝗻𝘀𝗶𝗴𝗵𝘁 — 🔐 Security Research
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📰 Article Title Here
+
+Clean description of the article in 2-3 sentences...
+
+🔗 Read the full article: https://example.com/article
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 Stay ahead of the curve — Follow for daily tech insights!
+♻️  Found this useful? Repost to help your network!
+
+#TechNews #Innovation #DailyInsight
+#CyberSecurity #InfoSec #Hacking #Privacy #ThreatIntelligence
+```
+
+## 🚀 Prerequisites
 
 - [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or higher
 - LinkedIn Developer Account with API access
-- LinkedIn Access Token
+- LinkedIn Access Token with `w_member_social` scope
 - LinkedIn Author URN (Person ID)
 
-## Setup
+## ⚙️ Setup
 
 ### 1. Get LinkedIn API Credentials
 
 1. Go to [LinkedIn Developer Portal](https://www.linkedin.com/developers/)
 2. Create a new application or use an existing one
-3. Generate an access token with the following scopes:
-   - `w_member_social` - to create posts on behalf of the member
+3. Generate an access token with the `w_member_social` scope
 4. Note down your access token
 
 ### 2. Find Your LinkedIn Author URN
@@ -37,10 +72,17 @@ To find your person ID:
 
 ### 3. Configure the Application
 
-#### Option A: Local Configuration (for development)
+#### Option A: Environment Variables (recommended for production)
 
-1. Create a file named `appsettings.json` in the project root
-2. Copy the template below and fill in your credentials:
+```bash
+export LINKEDIN_TOKEN="your_access_token"
+export LINKEDIN_AUTHOR_URN="urn:li:person:your_id"
+export VISIBILITY="CONNECTIONS"  # or "PUBLIC"
+```
+
+#### Option B: Local Configuration (for development)
+
+Edit `appsettings.json`:
 
 ```json
 {
@@ -48,138 +90,68 @@ To find your person ID:
     "AccessToken": "YOUR_LINKEDIN_ACCESS_TOKEN",
     "AuthorUrn": "urn:li:person:YOUR_PERSON_ID",
     "Visibility": "CONNECTIONS"
-  },
-  "RssFeedUrl": "https://example.com/rss-feed"
+  }
 }
 ```
 
 **Visibility Options:**
-- `CONNECTIONS` - Only visible to your connections (default)
-- `PUBLIC` - Visible to everyone on LinkedIn
-
-**Note:** The `appsettings.json` file is in `.gitignore` to protect your credentials.
-
-#### Option B: Environment Variables (for production/GitHub Actions)
-
-Set the following environment variables:
-- `LINKEDIN_TOKEN` - Your LinkedIn API access token
-- `LINKEDIN_AUTHOR_URN` - Your LinkedIn author URN
-- `VISIBILITY` - Connections or PUBLIC (optional, default: CONNECTIONS)
-- `RSS_FEED_URL` - URL of the RSS feed to fetch news from
+- `CONNECTIONS` — Only visible to your connections (default)
+- `PUBLIC` — Visible to everyone on LinkedIn
 
 ### 4. Run the Application
-
-Build and run the project:
 
 ```bash
 dotnet build
 dotnet run
 ```
 
-The application will:
-1. Fetch the latest news from your RSS feed
-2. Create a LinkedIn post with the news content
-3. Post to your LinkedIn profile
-
-## Usage Examples
-
-### Using a Tech News RSS Feed
-
-```json
-{
-  "LinkedIn": {
-    "AccessToken": "your_token_here",
-    "AuthorUrn": "urn:li:person:123456",
-    "Visibility": "PUBLIC"
-  },
-  "RssFeedUrl": "https://techcrunch.com/feed/"
-}
-```
-
-### Using a Custom Blog RSS Feed
-
-```json
-{
-  "LinkedIn": {
-    "AccessToken": "your_token_here",
-    "AuthorUrn": "urn:li:person:123456",
-    "Visibility": "CONNECTIONS"
-  },
-  "RssFeedUrl": "https://yourblog.com/feed.xml"
-}
-```
-
-## GitHub Actions
-
-The project includes a GitHub Actions workflow for automated weekly posting.
-
-### Quick Setup
-
-See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed instructions on configuring GitHub Actions.
+## 🔄 GitHub Actions — Automated Daily Posts
 
 ### Setup GitHub Secrets
 
 1. Go to your GitHub repository settings
 2. Navigate to **Secrets and variables** > **Actions**
 3. Add the following secrets:
-   - `LINKEDIN_TOKEN` - Your LinkedIn API access token
-   - `LINKEDIN_AUTHOR_URN` - Your LinkedIn author URN (e.g., `urn:li:person:XXXX`)
-   - `RSS_FEED_URL` - URL of the RSS feed to fetch news from
-   - `VISIBILITY` (optional) - `CONNECTIONS` or `PUBLIC`, default: `CONNECTIONS`
+   - `LINKEDIN_TOKEN` — Your LinkedIn API access token
+   - `LINKEDIN_AUTHOR_URN` — Your LinkedIn author URN
+   - `VISIBILITY` (optional) — `CONNECTIONS` or `PUBLIC` (default: `CONNECTIONS`)
 
 ### Schedule
 
-The workflow is scheduled to run every Monday at 10:00 UTC by default. You can modify the schedule in `.github/workflows/linkedin.yml`.
+The workflow runs **every day at 06:00 UTC (08:00 Lebanon time)**. You can also manually trigger it from the GitHub Actions tab.
 
-You can also manually trigger the workflow from the GitHub Actions tab.
-
-## RSS Feed Format
-
-The application expects standard RSS 2.0 format with the following structure:
-- `<channel>` containing `<item>` elements
-- Each `<item>` should have:
-  - `<title>` - The news headline
-  - `<link>` - URL to the full article
-
-## Troubleshooting
-
-### Missing Configuration Error
-
-If you see "❌ Missing configuration", ensure:
-- `appsettings.json` exists with all required fields, OR
-- Environment variables are set properly
-
-### LinkedIn Post Failed
-
-Common issues:
-- **Invalid Access Token**: Your token may have expired. Generate a new one.
-- **Incorrect Author URN**: Verify your person ID using the LinkedIn API.
-- **Insufficient Permissions**: Ensure your access token has the `w_member_social` scope.
-
-### Build Errors
-
-- Ensure you have .NET 10.0 SDK installed
-- Run `dotnet restore` to restore dependencies
-
-## Development
-
-### Project Structure
+## 🔧 Project Structure
 
 ```
 LinkedInAutoPoster/
-├── Program.cs              # Main entry point
-├── LinkedInPoster.cs       # LinkedIn API integration
-├── NewsFetcher.cs          # RSS feed fetching logic
+├── Program.cs              # Main entry point and orchestration
+├── LinkedInPoster.cs       # LinkedIn API integration + post formatting
+├── NewsFetcher.cs          # Multi-source RSS fetching + article extraction
 ├── LinkedInAutoPoster.csproj # Project configuration
-├── appsettings.json        # Configuration template (gitignored)
+├── appsettings.json        # Local config template (gitignored)
 ├── .github/workflows/      # GitHub Actions workflow
 └── README.md               # This file
 ```
 
-## License
+## 🐛 Troubleshooting
+
+### LinkedIn Post Failed
+- **Invalid Access Token** — Your token may have expired. Generate a new one.
+- **Incorrect Author URN** — Verify your person ID using the LinkedIn API.
+- **Insufficient Permissions** — Ensure your token has the `w_member_social` scope.
+- **API Version Issue** — The app tries the new Posts API first, then falls back to legacy UGC API automatically.
+
+### All Feeds Failed
+- Some RSS feeds may be temporarily down. The app tries all 7 feeds in random order and uses the first one that succeeds.
+
+### Build Errors
+- Ensure you have .NET 10.0 SDK installed
+- Run `dotnet restore` to restore dependencies
+
+## 📄 License
 
 This project is provided as-is for educational and personal use.
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests.

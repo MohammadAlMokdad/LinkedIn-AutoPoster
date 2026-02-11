@@ -1,0 +1,33 @@
+name: Weekly LinkedIn Poster
+
+on:
+  schedule:
+    - cron: '0 10 * * MON'  # Every Monday at 10:00 UTC
+  workflow_dispatch:       # Manual run option
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '7.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build project
+      run: dotnet build --configuration Release
+
+    - name: Run LinkedIn Poster
+      run: dotnet run --project LinkedInAutoPoster.csproj
+      env:
+        LINKEDIN_TOKEN: ${{ secrets.LINKEDIN_TOKEN }}
+        LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+        VISIBILITY: ${{ secrets.VISIBILITY }}
+        RSS_FEED_URL: ${{ secrets.RSS_FEED_URL }}

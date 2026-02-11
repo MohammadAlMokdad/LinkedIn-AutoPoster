@@ -4,18 +4,23 @@ class Program
 {
     static void Main()
     {
-        // Build configuration
+        // Build configuration - check environment variables first, then JSON file
         var config = new ConfigurationBuilder()
             .SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddEnvironmentVariables()
             .Build();
 
-        // Read settings from appsettings.json or environment variables
-        var accessToken = config["LinkedIn:AccessToken"];
-        var authorUrn = config["LinkedIn:AuthorUrn"];
-        var visibility = config["LinkedIn:Visibility"] ?? "CONNECTIONS";
-        var rssFeed = config["RssFeedUrl"];
+        // Read settings - try environment variables first, then appsettings.json
+        var accessToken = Environment.GetEnvironmentVariable("LINKEDIN_TOKEN") 
+                        ?? config["LinkedIn:AccessToken"];
+        var authorUrn = Environment.GetEnvironmentVariable("LINKEDIN_AUTHOR_URN") 
+                        ?? config["LinkedIn:AuthorUrn"];
+        var visibility = Environment.GetEnvironmentVariable("VISIBILITY") 
+                        ?? config["LinkedIn:Visibility"] 
+                        ?? "CONNECTIONS";
+        var rssFeed = Environment.GetEnvironmentVariable("RSS_FEED_URL") 
+                        ?? config["RssFeedUrl"];
 
         if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(authorUrn) || string.IsNullOrEmpty(rssFeed))
         {
